@@ -1,6 +1,0 @@
-<mvc:View controllerName="demo.ZNK02.controller.RootViewCust" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-		</App>
-	</Shell>
-</mvc:View>
