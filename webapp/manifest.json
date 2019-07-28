@@ -78,11 +78,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -92,25 +90,24 @@
 				"viewPath": "demo.ZNK02.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
-				"clearControlAggregation": false
-			},
-			"routes": [
-				{
-					"name": "Route_MainView",
-					"pattern": "",
-					"target": "Target_MainView"
-				},
-				{
-					"name": "Route_DetailView",
-					"pattern": "PATT{ID}",
-					"target": "Target_DetailView"
-				},
-				{
-					"name": "Route_CreateView",
-					"pattern": "Create",
-					"target": "Target_CreateView"
+				"clearControlAggregation": false,
+				"bypassed": {
+					"target": "notFound"
 				}
-			],
+			},
+			"routes": [{
+				"name": "Route_MainView",
+				"pattern": "",
+				"target": "Target_MainView"
+			}, {
+				"name": "Route_DetailView",
+				"pattern": "PATT{ID}",
+				"target": "Target_DetailView"
+			}, {
+				"name": "Route_CreateView",
+				"pattern": "Create",
+				"target": "Target_CreateView"
+			}],
 			"targets": {
 				"TargetRootViewCust": {
 					"viewType": "XML",
@@ -130,6 +127,11 @@
 				"Target_CreateView": {
 					"viewType": "XML",
 					"viewName": "CreateView"
+				},
+				"notFound": {
+					"viewType": "XML",
+					"viewName": "NotFound",
+					"transition": "show"
 				}
 			}
 		}
