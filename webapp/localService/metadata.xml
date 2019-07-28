@@ -1,0 +1,23 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="OData.services">
+			<EntityType Name="MY_TABLEType">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="NAME" Type="Edm.String" MaxLength="20"/><Property Name="DESCRIPTION" Type="Edm.String" MaxLength="50"/></EntityType>
+			<EntityType Name="POHeaderType">
+				<Key><PropertyRef Name="EBELN"/></Key><Property Name="EBELN" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="DESCR" Type="Edm.String" MaxLength="10"/><NavigationProperty Name="DetailRef" Relationship="OData.services.ToPoDetailAssctnType" FromRole="POHeaderPrincipal"
+					ToRole="PODetailDependent"/><NavigationProperty Name="ItemRef" Relationship="OData.services.ToPoItemAssctnType" FromRole="POHeaderPrincipal" ToRole="POItemsDependent"/></EntityType>
+			<EntityType Name="PODetailType">
+				<Key><PropertyRef Name="EBELN"/></Key><Property Name="EBELN" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="SHORT_DESC" Type="Edm.String" MaxLength="10"/><Property Name="LONG_DESC" Type="Edm.String" MaxLength="100"/><Property Name="ERDAT" Type="Edm.DateTime"/></EntityType>
+			<EntityType Name="POItemsType">
+				<Key><PropertyRef Name="EBELN"/><PropertyRef Name="EBELP"/></Key><Property Name="EBELN" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="EBELP" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="MATNR" Type="Edm.String" MaxLength="10"/><Property Name="DESCR" Type="Edm.String" MaxLength="10"/></EntityType>
+			<Association Name="ToPoDetailAssctnType"><End Type="OData.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/><End Type="OData.services.PODetailType" Role="PODetailDependent" Multiplicity="1"/></Association>
+			<Association Name="ToPoItemAssctnType"><End Type="OData.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/><End Type="OData.services.POItemsType" Role="POItemsDependent" Multiplicity="*"/></Association>
+			<EntityContainer Name="services" m:IsDefaultEntityContainer="true"><EntitySet Name="MY_TABLE" EntityType="OData.services.MY_TABLEType"/><EntitySet Name="POHeader" EntityType="OData.services.POHeaderType"/><EntitySet Name="PODetail" EntityType="OData.services.PODetailType"/><EntitySet Name="POItems" EntityType="OData.services.POItemsType"/>
+				<AssociationSet Name="ToPoDetailAssctn" Association="OData.services.ToPoDetailAssctnType"><End Role="POHeaderPrincipal" EntitySet="POHeader"/><End Role="PODetailDependent" EntitySet="PODetail"/></AssociationSet>
+				<AssociationSet Name="ToPoItemAssctn" Association="OData.services.ToPoItemAssctnType"><End Role="POHeaderPrincipal" EntitySet="POHeader"/><End Role="POItemsDependent" EntitySet="POItems"/></AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
