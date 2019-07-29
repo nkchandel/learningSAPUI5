@@ -14,14 +14,6 @@ sap.ui.define([
 		 * @memberOf demo.ZNK02.view.DetailView
 		 */
 		onInit: function () {
-
-			var locModel = {
-				"Edit": false
-			};
-
-			var oModel = new sap.ui.model.json.JSONModel(locModel);
-			this.getView().setModel(oModel, "locModel");
-
 			// Get the Router Info
 			var oRouter = this.getRouter();
 			// Validate/Match the Router Details sent from source using oRouter.navTo("Router_Detail", {SelectedItem: selectPO});
@@ -30,6 +22,14 @@ sap.ui.define([
 		},
 		// Custom Method to bind the elements using the Event Arguments
 		_onRouteFound: function (oEvt) {
+			
+			var locModel = {
+				"Edit": false
+			};
+
+			var oModel = new sap.ui.model.json.JSONModel(locModel);
+			this.getView().setModel(oModel, "locModel");
+			
 			var oArgument = oEvt.getParameter("arguments");
 			var oView = this.getView();
 			oView.bindElement({

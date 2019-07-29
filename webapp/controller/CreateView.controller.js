@@ -14,6 +14,13 @@ sap.ui.define([
 		 * @memberOf demo.ZNK02.view.DetailView
 		 */
 		onInit: function () {
+			var oRouter = this.getRouter();
+			// Validate/Match the Router Details sent from source using oRouter.navTo("Router_Detail", {SelectedItem: selectPO});
+			oRouter.getRoute("Route_CreateView").attachMatched(this._onRouteFound, this);
+		},
+		// Custom Method to bind the elements using the Event Arguments
+		_onRouteFound: function (oEvt) {
+			
 			var createModel = {
 				"ID": null,
 				"NAME": "",
@@ -21,8 +28,9 @@ sap.ui.define([
 			};
 			var oModel = new sap.ui.model.json.JSONModel(createModel);
 			this.getView().setModel(oModel, "createModel");
+			
 		},
-
+		
 		_onPressSave: function (oEvt) {
 
 			var that = this;
@@ -35,6 +43,7 @@ sap.ui.define([
 						title: "Success",
 						actions: sap.m.MessageBox.Action.OK,
 						onClose: function (oAction) {
+							//this.getView().getModel("createModel").setData(null);
 							var oRouter = sap.ui.core.UIComponent.getRouterFor(that1);
 							oRouter.navTo("Route_MainView");
 						},
@@ -57,28 +66,25 @@ sap.ui.define([
 				}
 			});
 
-			var createModel = {
-				"ID": null,
-				"NAME": "",
-				"DESCRIPTION": ""
-			};
-			var oModel = new sap.ui.model.json.JSONModel(createModel);
-			this.getView().setModel(oModel, "createModel");
-
+			// var createModel = {
+			// 	"ID": null,
+			// 	"NAME": "",
+			// 	"DESCRIPTION": ""
+			// };
+			// var oModel = new sap.ui.model.json.JSONModel(createModel);
+			// this.getView().setModel(oModel, "createModel");
+			
 		},
 
 		_onPressCancel: function (oEvt) {
-
-			var createModel = {
-				"ID": null,
-				"NAME": "",
-				"DESCRIPTION": ""
-			};
-			var oModel = new sap.ui.model.json.JSONModel(createModel);
-			this.getView().setModel(oModel, "createModel");
-
+			// var createModel = {
+			// 	"ID": null,
+			// 	"NAME": "",
+			// 	"DESCRIPTION": ""
+			// };
+			// var oModel = new sap.ui.model.json.JSONModel(createModel);
+			// this.getView().setModel(oModel, "createModel");
 			this.getRouter().navTo("Route_MainView");
-
 		},
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

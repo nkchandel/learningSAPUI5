@@ -3,9 +3,12 @@
 	<Page title="Detail View" showNavButton="true" navButtonPress="onGenBack">
 		<Panel expandable="true" expanded="true" headerText="Panel : MY_TABLE Details" width="auto" class="sapUiResponsiveMargin">
 			<content>
-				<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" title="MY_TABLE Details" labelSpanXL="4"
-					labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
-					columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+				<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" title="MY_TABLE Details" 
+				labelSpanXL="3"	labelSpanL="3" labelSpanM="6" labelSpanS="12" 
+				adjustLabelSpan="false" 
+				emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+				columnsXL="1" columnsL="1" columnsM="1" 
+				singleContainerFullSize="false">
 					<f:content>
 						<Label text="ID"/>
 						<Input type="Text" value="{ID}" editable="{locModel>/Edit}"/>
